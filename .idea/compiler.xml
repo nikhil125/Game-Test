@@ -22,10 +22,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="Game-Test" />
+        <module name="Animation-JavaFX" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="Animation-JavaFX" target="1.5" />
       <module name="Game-Test" target="1.5" />
     </bytecodeTargetLevel>
   </component>
