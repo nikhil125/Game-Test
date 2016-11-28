@@ -5,9 +5,9 @@ public class Sprite {
 	private int x, y;
 	private int[] pixels;
 	private SpriteSheet sheet;
-	public static final Sprite GRASS = new Sprite(16, 0, 0, SpriteSheet.TILES);
+	public static final Sprite GRASS = new Sprite(64, 0, 1, SpriteSheet.TILES);
 	public static final Sprite VOID = new Sprite(16, 0x428ff4);
-	public static final Sprite PLAYER1 = new Sprite(32, 10, 15, SpriteSheet.PLAYER_TILES);
+	public static final Sprite PLAYER1 = new Sprite(32, 0, 0, SpriteSheet.PLAYER_TILES);
 //	public static final Sprite PLAYER2 = new Sprite(32, 0, 16 , SpriteSheet.PLAYER_TILES);
 //	public static final Sprite PLAYER3 = new Sprite(32, 16, 0 , SpriteSheet.PLAYER_TILES);
 //	public static final Sprite PLAYER4 = new Sprite(32, 16, 16 , SpriteSheet.PLAYER_TILES);

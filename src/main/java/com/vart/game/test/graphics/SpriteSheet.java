@@ -8,8 +8,8 @@ public class SpriteSheet {
 	private final String path;
 	private final int SIZE;
 	private final int[] pixels;
-	public static SpriteSheet TILES = new SpriteSheet("/textures/grass-tex.png", 257);
-	public static SpriteSheet PLAYER_TILES = new SpriteSheet("/textures/grid-8x8-skl.png", 864);
+	public static SpriteSheet TILES = new SpriteSheet("/textures/grid-256.png", 256);
+	public static SpriteSheet PLAYER_TILES = new SpriteSheet("/textures/grid-256.png", 256);
 
 	public SpriteSheet(String path, int size) {
 		this.path = path;
@@ -36,5 +36,14 @@ public class SpriteSheet {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public int[] grab(int col, int row) throws IOException {
+		BufferedImage image = ImageIO.read(SpriteSheet.class.getResource(path));
+
+		BufferedImage subimage = image.getSubimage(col, row, 32, 32);
+		int w = subimage.getWidth();
+		int h = subimage.getHeight();
+		return image.getRGB(0, 0, w, h, null, 0, w);
 	}
 }

@@ -17,10 +17,8 @@ public class Player {
 		this.height = height;
 	}
 
-	public void render(int x, int y, GraphicsContext scene) {
+	public void render(int x, int y, GraphicsContext context) {
 		imageView.setViewport(new Rectangle2D(x, y, width, height));
-
-//		context.setGlobalAlpha(life);
-		scene.drawImage(imageView.getImage(), x, y);
+		context.drawImage(imageView.getImage(), x, y);
 	}
 }

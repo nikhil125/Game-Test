@@ -9,6 +9,10 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 /**
  * Created by Nikhil on 11/12/2016.
  */
@@ -17,8 +21,8 @@ public class Starter extends Application {
 	private int height = 600;
 	private int x, y = 0;
 	private GraphicsContext context;
-	private Particle particle;
-
+	private List<Particle> particles = new ArrayList<Particle>();
+	private Emitter emitter = new FireEmitter();
 	@Override
 	public void init() throws Exception {
 		super.init();
@@ -57,24 +61,26 @@ public class Starter extends Application {
 	private void update() {
 		context.setGlobalAlpha(1.0);
 		context.setGlobalBlendMode(BlendMode.SRC_OVER);
-//		context.setFill(Color.BLACK);
-//		context.fillRect(0, 0, 600, 600);
+		context.setFill(Color.BLACK);
+		context.fillRect(0, 0, 600, 600);
 		if (y > 600) {
 			y = 0;
 		}
-		if(x > 600)
-			x =  0;
-//		particles.addAll(emitter.emit(x, y++));
+		if (x > 600)
+			x = 0;
+		particles.addAll(emitter.emit(300, 300));
 //		particles.addAll(emitter.emit(x-20, y++ +10));
 //		particles.addAll(emitter.emit(x+30, y++-20));
-//		for (Iterator<Particle> iter = particles.iterator(); iter.hasNext(); ) {
-//		Particle p = new Particle(x++, y++, new Point2D(x + 5, y + 5), 5, Color.rgb(240, 140, 24, .5), BlendMode.ADD, 2);
-		Player player = new Player("/skeleton-2.png",16, 16);
-//		p.update();
-//		if (p.isAlive())
-//			p.render(context);
-
-		player.render(x++, y++ , context);
+		for (Iterator<Particle> iter = particles.iterator(); iter.hasNext(); ) {
+			Particle p = iter.next();
+//			Particle p = new Particle(x++, y++, new Point2D(x + 5, y + 5), 5, Color.rgb(240, 140, 24, .5), BlendMode.ADD, 2);
+			p.update();
+			if (p.isAlive()) {
+				p.render(context);
+			}
+		}
+//		Player player = new Player("/skeleton-2.png", 8, 8);
+//		player.render(x++, y++ , context);
 	}
 
 
